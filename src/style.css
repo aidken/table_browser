@@ -1,0 +1,148 @@
+:root {
+  --text: #1f2933;
+  --muted: #64707d;
+  --border: #d5dbe1;
+  --surface: #ffffff;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --secondary: #eef2f6;
+
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: #f5f7fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Author display rules would otherwise override the hidden attribute. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.app-header {
+  padding: 16px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+main {
+  padding: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.status.error {
+  color: #b42318;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.hint {
+  margin: 8px 0 12px;
+  font-size: 0.9rem;
+}
+
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 64px 16px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.drop-zone p {
+  margin: 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.toolbar label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.file-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.spacer {
+  flex: 1;
+}
+
+select,
+button,
+.button {
+  font: inherit;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+button,
+.button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  display: inline-block;
+}
+
+button.secondary {
+  background: var(--secondary);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+#grid {
+  margin-top: 12px;
+  background: var(--surface);
+}
+
+/* Keep the drop zone usable on phones. */
+@media (max-width: 600px) {
+  main {
+    padding: 12px;
+  }
+
+  .drop-zone {
+    padding: 40px 12px;
+  }
+}

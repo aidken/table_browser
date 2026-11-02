@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Open CSV, Excel, or Parquet files in your browser. Sort, filter, reorder columns, and download." />
+    <title>Table Browser</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Table Browser</h1>
+    </header>
+
+    <main>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="drop-zone" class="drop-zone">
+        <p>Drop a CSV, Excel, or Parquet file here</p>
+        <p class="muted">Files stay in your browser. Nothing is uploaded.</p>
+        <label class="button">
+          Choose file
+          <input id="file-input" type="file" accept=".csv,.xlsx,.xls,.parquet" hidden />
+        </label>
+      </section>
+
+      <section id="viewer" class="viewer" hidden>
+        <div class="toolbar">
+          <span id="file-name" class="file-name"></span>
+          <label id="sheet-control" hidden>
+            Sheet
+            <select id="sheet-select"></select>
+          </label>
+          <span id="row-count" class="muted"></span>
+          <span class="spacer"></span>
+          <label>
+            Format
+            <select id="format-select">
+              <option value="csv">CSV</option>
+              <option value="xlsx">Excel (.xlsx)</option>
+              <option value="json">JSON</option>
+            </select>
+          </label>
+          <button id="download-button" type="button">Download</button>
+          <button id="reset-button" type="button" class="secondary">Open another file</button>
+        </div>
+        <p class="muted hint">Click a header to sort. Filter with the boxes under the headers. Drag headers to reorder columns. Downloads contain the rows and column order you see.</p>
+        <div id="grid"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

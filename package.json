@@ -1,0 +1,24 @@
+{
+  "name": "table-browser",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hyparquet": "1.32.0",
+    "papaparse": "5.7.0",
+    "tabulator-tables": "6.7.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "@types/papaparse": "5.5.2",
+    "@types/tabulator-tables": "^6.3.6",
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
+  }
+}
