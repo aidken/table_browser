@@ -1,8 +1,8 @@
-# table_browser
+# 📊 Table Browser
 
 Open a CSV, Excel, or Parquet file in your browser, sort and filter it, reorder columns, and download the result. Files never leave your computer.
 
-Live app: <https://aidken.github.io/table_browser/>
+Live app: [https://aidken.github.io/table_browser/](https://aidken.github.io/table_browser/)
 
 ## Features
 
