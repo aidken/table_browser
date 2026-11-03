@@ -22,6 +22,7 @@ const sheetSelect = element<HTMLSelectElement>('sheet-select')
 const rowCount = element<HTMLElement>('row-count')
 const formatSelect = element<HTMLSelectElement>('format-select')
 const downloadButton = element<HTMLButtonElement>('download-button')
+const restoreButton = element<HTMLButtonElement>('restore-button')
 const resetButton = element<HTMLButtonElement>('reset-button')
 const gridElement = element<HTMLElement>('grid')
 
@@ -59,14 +60,21 @@ async function openFile(file: File): Promise<void> {
 
 function loadSheet(name: string): void {
   if (!parsed) return
-  table?.destroy()
   currentDataset = parsed.getSheet(name)
   sheetSelect.value = name
+  mountGrid(currentDataset)
+}
 
-  table = createGrid(gridElement, currentDataset, (visibleRows) => {
-    const total = currentDataset?.rows.length ?? 0
-    rowCount.textContent = `${visibleRows.toLocaleString()} of ${total.toLocaleString()} rows`
+// Builds a fresh grid from the original data, so sorts, filters, and column moves start over.
+function mountGrid(dataset: Dataset): void {
+  table?.destroy()
+  table = createGrid(gridElement, dataset, (visibleRows) => {
+    rowCount.textContent = `${visibleRows.toLocaleString()} of ${dataset.rows.length.toLocaleString()} rows`
   })
+}
+
+function restore(): void {
+  if (currentDataset) mountGrid(currentDataset)
 }
 
 // Exports the rows and columns the user currently sees: filtered, sorted, and reordered.
@@ -111,4 +119,5 @@ window.addEventListener('drop', (event) => {
 
 sheetSelect.addEventListener('change', () => loadSheet(sheetSelect.value))
 downloadButton.addEventListener('click', downloadView)
+restoreButton.addEventListener('click', restore)
 resetButton.addEventListener('click', reset)
